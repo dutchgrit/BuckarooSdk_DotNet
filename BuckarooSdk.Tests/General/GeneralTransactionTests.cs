@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.Threading.Tasks;
 using BuckarooSdk;
 using BuckarooSdk.DataTypes;
 using BuckarooSdk.DataTypes.RequestBases;
@@ -78,7 +79,7 @@ namespace BuckarooSdk.Tests.General
 			var request = this.SdkClient.CreateRequest();
 			var authRequest = request.Authenticate(
 					TestSettings.WebsiteKey, TestSettings.SecretKey,
-						TestSettings.Test, CultureInfo.GetCultureInfo("nl-NL"),
+						TestSettings.IsLive, CultureInfo.GetCultureInfo("nl-NL"),
 							 ChannelEnum.Web);
 			var transactionRequest = authRequest.TransactionRequest();
 			TransactionBase data = new TransactionBase();
@@ -127,6 +128,33 @@ namespace BuckarooSdk.Tests.General
 				.Status(key);
 
 			var requestResponse = request.GetSingleStatus();
+
+			if (requestResponse.Status.Code.Code == BuckarooSdk.Constants.Status.WaitingForConsumer)
+			{
+				Process.Start("");
+
+			}
+			if (requestResponse.Status.Code.Code == BuckarooSdk.Constants.Status.Success)
+			{
+
+			}
+
+			//var logging = this.SdkClient.LoggerFactory.GetFullLog();
+			//Console.WriteLine(logging);
+
+		}
+
+		[TestMethod]
+		public async Task TransactionStatusAsyncTest()
+		{
+			const string key = "70217564D5F94EE090091DF923030257";
+
+			var request = this.SdkClient.CreateRequest()
+				.Authenticate(Constants.TestSettings.WebsiteKey, Constants.TestSettings.SecretKey, false, new CultureInfo("nl-NL"))
+				.TransactionStatusRequest()
+				.Status(key);
+
+			var requestResponse = await request.GetSingleStatusAsync();
 
 			if (requestResponse.Status.Code.Code == BuckarooSdk.Constants.Status.WaitingForConsumer)
 			{

@@ -83,7 +83,7 @@ namespace BuckarooSdk.Connection
 						throw new Exception(Constants.Logging.Messages.BadImplementation);
 				}
 
-				var responseJson = response.Content.ReadAsStringAsync().Result;
+				var responseJson = await response.Content.ReadAsStringAsync();
 
 				// deserialize to response type
 				try

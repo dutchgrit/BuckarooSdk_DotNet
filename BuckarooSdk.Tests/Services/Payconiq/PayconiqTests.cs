@@ -24,7 +24,7 @@ namespace BuckarooSdk.Tests.Services.Payconiq
 		public void PayTest()
 		{
 			var request = this.BuckarooClient.CreateRequest()
-				.Authenticate(TestSettings.WebsiteKey, TestSettings.SecretKey, TestSettings.Test, new CultureInfo("nl-NL"))
+				.Authenticate(TestSettings.WebsiteKey, TestSettings.SecretKey, TestSettings.IsLive, new CultureInfo("nl-NL"))
 				.TransactionRequest()
 				.SetBasicFields(new TransactionBase
 				{

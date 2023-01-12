@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using BuckarooSdk.DataTypes;
 using BuckarooSdk.DataTypes.RequestBases;
 using BuckarooSdk.DataTypes.Response.StatusRequest;
@@ -20,7 +21,6 @@ namespace BuckarooSdk.Transaction.Status
 			var list = new List<string>();
 			var list2 = list.ToList();
 		}
-		
 
 		public StatusesRequestResponse GetMultipleStatuses()
 		{
@@ -36,6 +36,12 @@ namespace BuckarooSdk.Transaction.Status
 		{
 			return Connection.Connector.SendRequest<IRequestBase, DataTypes.Response.StatusRequest.TransactionStatus>
 				(this.TransactionStatus.Request.Request, this.TransactionStatus.TransactionStatusBase, HttpRequestType.Get).Result;
+		}
+
+		public async Task<DataTypes.Response.StatusRequest.TransactionStatus> GetSingleStatusAsync()
+		{
+			return await Connection.Connector.SendRequest<IRequestBase, DataTypes.Response.StatusRequest.TransactionStatus>
+				(this.TransactionStatus.Request.Request, this.TransactionStatus.TransactionStatusBase, HttpRequestType.Get);
 		}
 	}
 }
