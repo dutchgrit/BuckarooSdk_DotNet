@@ -147,7 +147,7 @@ namespace BuckarooSdk.Tests.General
 		[TestMethod]
 		public async Task TransactionStatusAsyncTest()
 		{
-			const string key = "70217564D5F94EE090091DF923030257";
+			const string key = "12890D0FFE9F4840A69126DA2A93F1B6";
 
 			var request = this.SdkClient.CreateRequest()
 				.Authenticate(Constants.TestSettings.WebsiteKey, Constants.TestSettings.SecretKey, false, new CultureInfo("nl-NL"))
