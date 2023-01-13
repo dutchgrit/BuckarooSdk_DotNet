@@ -49,6 +49,7 @@
 			Ippies,
 			HuisTuinGiftcard,
             VVVGiftcard,
+            SepaDirectDebit
 		}
 	}
 }
