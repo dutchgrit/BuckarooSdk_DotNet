@@ -111,6 +111,7 @@ namespace BuckarooSdk.Connection
 			}
 			catch (Exception exception)
 			{
+                request.BuckarooSdkLogger.AddErrorLogging(exception.ToString());
 				return default(TResponse);
 			}
 		}

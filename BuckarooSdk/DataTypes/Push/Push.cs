@@ -33,7 +33,7 @@ namespace BuckarooSdk.DataTypes.Push
 		{
 			var result = new T();
 
-			var service = this.Services.FirstOrDefault(s => s.Name.Equals(result.ServiceNames.ToString(), StringComparison.OrdinalIgnoreCase));
+			var service = this.Services?.FirstOrDefault(s => s.Name.Equals(result.ServiceNames.ToString(), StringComparison.OrdinalIgnoreCase));
 			if (service == null) return null;
 
 			result.FillFromPush(service);
