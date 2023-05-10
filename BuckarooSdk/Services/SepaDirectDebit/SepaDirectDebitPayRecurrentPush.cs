@@ -30,6 +30,10 @@ namespace BuckarooSdk.Services.SepaDirectDebit
         /// The BIC of the customers account.
         /// </summary>
         public string CustomerBic { get; set; }
+        /// <summary>
+        /// The reason of a cancelled payment
+        /// </summary>
+        public string ReasonExplanation { get; set; }
 
         internal override void FillFromPush(DataTypes.Response.Service serviceResponse)
         {

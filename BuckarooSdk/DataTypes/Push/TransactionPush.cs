@@ -42,6 +42,10 @@ namespace BuckarooSdk.DataTypes.Push
 		/// </summary>
 		public decimal? AmountDebit { get; set; }
 		/// <summary>
+		/// The credit amount of the requested transaction
+		/// </summary>
+		public decimal? AmountCredit { get; set; }
+		/// <summary>
 		/// The transaction type that was specified in the transaction request.
 		/// </summary>
 		public string TransactionType { get; set; }

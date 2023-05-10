@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using BuckarooSdk.DataTypes;
 using BuckarooSdk.DataTypes.RequestBases;
 using BuckarooSdk.DataTypes.Response;

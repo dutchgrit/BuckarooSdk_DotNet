@@ -1,4 +1,4 @@
-﻿using BuckarooSdk.Constants;
+using BuckarooSdk.Constants;
 using Newtonsoft.Json;
 using System;
 using System.Linq;
