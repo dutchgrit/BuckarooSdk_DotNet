@@ -13,7 +13,7 @@ namespace BuckarooSdk.Services.CreditManagement.TransactionRequest
 		/// required = true. 
 		/// The date corresponding to the invoice
 		/// </summary>
-		public DateTime InvoiceDate { get; set; }
+		public String InvoiceDate { get; set; }
 		/// <summary>
 		/// The maximum step index that is to be used in the credit management scheme.
 		/// </summary>
@@ -22,7 +22,7 @@ namespace BuckarooSdk.Services.CreditManagement.TransactionRequest
 		/// The date that the invoice is due for payment. If not paid, the invoice will be put to the next
 		/// step in the creditmanagement scheme.
 		/// </summary>
-		public DateTime DueDate { get; set; }
+		public String DueDate { get; set; }
 		/// <summary>
 		/// The key of the scheme that is to be used for this invoice.
 		/// </summary>

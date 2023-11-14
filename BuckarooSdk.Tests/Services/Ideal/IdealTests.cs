@@ -93,8 +93,8 @@ namespace BuckarooSdk.Tests.Services.Ideal
 				.CreditManagement()
 				.CreateCombinedInvoice(new CreditManagementInvoiceRequest
 				{
-					InvoiceDate = DateTime.Now,
-					DueDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day).AddDays(10),
+					InvoiceDate = DateTime.Now.Date.ToString(),
+					DueDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day).AddDays(10).Date.ToString(),
 					SchemeKey = "DefaultNone",
 					InvoiceAmount = 0.05m,
 					Debtor = new Debtor
