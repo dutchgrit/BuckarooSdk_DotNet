@@ -24,7 +24,7 @@ namespace BuckarooSdk.Base
 			this.SignatureCalculationService = new SignatureCalculationService();
 		}
 
-		public Push DeserializePush(byte[] body, string requestUri, string authorizationHeader)
+		public BasePush DeserializePush(byte[] body, string requestUri, string authorizationHeader)
 		{
 			var requestUriEncoded = WebUtility.UrlEncode(requestUri)?.ToLower();
 
@@ -43,10 +43,8 @@ namespace BuckarooSdk.Base
 			return this.DeserializePush(bodyAsString);
 		}
 
-		private Push DeserializePush(string jsonString)
+		private BasePush DeserializePush(string jsonString)
 		{
-			Push deserializeObject;
-
 			var secondLeftBraceIndex = jsonString.IndexOf("{", 1 + jsonString.IndexOf("{", StringComparison.Ordinal), StringComparison.Ordinal);
 			var lastRightBraceIndex = jsonString.LastIndexOf("}", StringComparison.Ordinal);
 			var pushtype = jsonString.Substring(0, secondLeftBraceIndex);
@@ -59,17 +57,25 @@ namespace BuckarooSdk.Base
 				return DeserializeTransaction(content);
 			}
 
-			if (pushtype.Contains(PushType.DataRequestPush))
+            if (pushtype.Contains(PushType.Invoice))
+            {
+                return DeserializeInvoice(content);
+            }
+
+            if (pushtype.Contains(PushType.DataRequestPush))
 			{
-				deserializeObject = DeserializeDataRequest(content);
-			}
-			else
-			{
-				throw new SerializationException();
+				return DeserializeDataRequest(content);
 			}
 
-			return deserializeObject;
+            throw new SerializationException();
 		}
+
+        private static InvoicePush DeserializeInvoice(string jsonString)
+        {
+            var result = JsonConvert.DeserializeObject<InvoicePush>(jsonString);
+
+            return result;
+        }
 
         private static TransactionPush DeserializeTransaction(string jsonString)
         {
