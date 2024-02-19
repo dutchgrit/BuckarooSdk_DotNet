@@ -14,6 +14,7 @@ using BuckarooSdk.Services.CreditManagement.DataRequest;
 using BuckarooSdk.Services.CreditManagement.TransactionRequest;
 using BuckarooSdk.Services.Ideal.Push;
 using BuckarooSdk.Tests.Constants;
+using BuckarooSdk.DataTypes.Push;
 
 namespace BuckarooSdk.Tests.Services.Ideal
 {
@@ -214,7 +215,7 @@ namespace BuckarooSdk.Tests.Services.Ideal
 				var authorizationheader = $"hmac {pushSignature}";				// DEZE IS BELANGRIJK: SIGNATURE
 
 				// Function that returns a structured push, based on the JSON pushed that is received.
-				var push = pushHandler.DeserializePush(bodyAsBytes, TestSettings.PushUri, authorizationheader);
+				var push = pushHandler.DeserializePush(bodyAsBytes, TestSettings.PushUri, authorizationheader) as Push;
 
 				var service = push.GetServices();
 

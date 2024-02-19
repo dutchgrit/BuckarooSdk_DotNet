@@ -10,6 +10,7 @@ using BuckarooSdk.DataTypes.RequestBases;
 using BuckarooSdk.Logging;
 using BuckarooSdk.Services.SepaDirectDebit;
 using BuckarooSdk.Tests.Constants;
+using BuckarooSdk.DataTypes.Push;
 
 namespace BuckarooSdk.Tests.Services.SepaDirectDebit
 {
@@ -64,7 +65,7 @@ namespace BuckarooSdk.Tests.Services.SepaDirectDebit
                                                                                                         string.Empty, TestSettings.WebsiteKey, TestSettings.SecretKey);     
 
 
-                var push = pushHandler.DeserializePush(bodyAsBytes, string.Empty, $"hmac {pushSignature}");
+                var push = pushHandler.DeserializePush(bodyAsBytes, string.Empty, $"hmac {pushSignature}") as Push;
 
                 var responseData = push.GetActionResponse<SepaDirectDebitPayRecurrentPush>();
 

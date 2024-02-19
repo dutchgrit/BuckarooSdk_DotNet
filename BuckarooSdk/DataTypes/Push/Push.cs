@@ -22,7 +22,7 @@ namespace BuckarooSdk.DataTypes.Push
         /// </summary>
         public List<Response.Service> Services { get; set; }
 
-        public List<ServiceNames> GetServices()
+        public override List<ServiceNames> GetServices()
         {
             return this.Services.Select(service => (ServiceNames)Enum.Parse(typeof(ServiceNames), service.Name, true)).ToList();
         }

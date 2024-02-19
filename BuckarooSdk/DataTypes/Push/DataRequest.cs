@@ -89,7 +89,7 @@ namespace BuckarooSdk.DataTypes.Push
 			this.Status = new Status();
 		}
 
-		public new List<ServiceNames> GetServices()
+		public override List<ServiceNames> GetServices()
 		{
 			var services = new List<ServiceNames>();
 			foreach (var service in this.Services)

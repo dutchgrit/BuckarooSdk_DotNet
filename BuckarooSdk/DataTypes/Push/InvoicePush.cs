@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using static BuckarooSdk.Constants.Services;
 
 namespace BuckarooSdk.DataTypes.Push
 {
@@ -29,5 +31,10 @@ namespace BuckarooSdk.DataTypes.Push
         public object DebtorFilePayLink { get; set; }
         public object DebtorFileNumber { get; set; }
         public object OriginalInvoiceNumber { get; set; }
+
+        public override List<ServiceNames> GetServices()
+        {
+            return new List<ServiceNames>();
+        }
     }
 }
